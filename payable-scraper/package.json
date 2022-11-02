@@ -17,5 +17,10 @@
         "eslint": "^8.26.0",
         "mocha": "^10.1.0",
         "typescript": "^4.8.4"
+    },
+    "dependencies": {
+        "puppeteer": "^19.2.0",
+        "tessaract": "^1.0.0",
+        "tesseract.js": "^3.0.3"
     }
 }
