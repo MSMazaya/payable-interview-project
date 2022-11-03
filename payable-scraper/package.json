@@ -1,28 +1,33 @@
 {
+    "type": "commonjs",
     "name": "payable-scraper",
     "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
+    "description": "Interview project for creating a scraper library (payable)",
+    "main": "lib/index.js",
     "scripts": {
-        "start": "tsc && node dist/index.js",
+        "build": "tsc",
         "lint": "eslint . --ext .ts",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "files": [
+        "lib/index.js",
+        "engine",
+        "scraper",
+        "utils"
+    ],
     "keywords": [],
-    "author": "",
+    "author": "Muhammad Sulthan Mazaya",
     "license": "ISC",
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^5.42.0",
         "@typescript-eslint/parser": "^5.42.0",
         "eslint": "^8.26.0",
-        "mocha": "^10.1.0",
         "typescript": "^4.8.4"
     },
     "dependencies": {
         "md5": "^2.3.0",
         "moment": "^2.29.4",
         "puppeteer": "^19.2.0",
-        "tessaract": "^1.0.0",
         "tesseract.js": "^3.0.3"
     }
 }

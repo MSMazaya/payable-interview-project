@@ -59,7 +59,7 @@ export default class BniBankScraper extends BaseBankScraper {
                 await this.engine.click("#Informasi-Saldo--Mutasi_Saldo-Rekening")
 
                 const currentBalance = await this.engine.getInnerHTML("#HREF_AccountSummaryFG\\.BALANCE_ARRAY\\[0\\]");
-                return parseInt(currentBalance);
+                return parseInt(currentBalance.replace(/,/g, ""))
             }
             throw new Error("User is not logged in")
         } catch {

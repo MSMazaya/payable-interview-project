@@ -7,7 +7,7 @@ export default class PuppeteerEngine implements BaseEngine {
 
     async init() {
         this.browser = await puppeteer.launch({
-            headless: false
+            headless: process.env.DEBUG ? false : true,
         });
         this.page = await this.browser.newPage();
     }
