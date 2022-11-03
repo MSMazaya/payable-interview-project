@@ -36,7 +36,7 @@ After installing the dependencies, you can choose to test 2 functionality of the
     ```
     > Note: if you want to see the browser while the web crawler do its job you can use `DEBUG=1 npm run get-transaction` instead.
 
-    This will then prompt you to fill in two credentials (account id and password) followed by date range selection with format DD-MMM-YYYY (e.g. 20-Oct-2022). If the program is successful, it will be printing a table of your transactions. Do note that the range could not be more than 30 days or else the program will fail to get the transactions information.
+    This will then prompt you to fill in two credentials (account id and password) followed by date range selection with format DD-MM-YYYY (e.g. 20-10-2022). If the program is successful, it will be printing a table of your transactions. Do note that the range could not be more than 30 days or else the program will fail to get the transactions information.
 
 2. Getting balance
     To run this program, all you need to do is to run the following command.
@@ -44,4 +44,4 @@ After installing the dependencies, you can choose to test 2 functionality of the
     ```
     npm run get-balance
     ```
-    This will then prompt you to fill in two credentials (account id and password) followed by date range selection with format DD-MM-YYYY (e.g. 20-08-2022). If the program is successful, it will print your current balance.
+    This will then prompt you to fill in two credentials (account id and password). If the program is successful, it will print your current balance.
