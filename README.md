@@ -44,4 +44,4 @@ After installing the dependencies, you can choose to test 2 functionality of the
     ```
     npm run get-balance
     ```
-    This will then prompt you to fill in two credentials (account id and password) followed by date range selection with format DD-MMM-YYYY (e.g. 20-Oct-2022). If the program is successful, it will print your current balance.
+    This will then prompt you to fill in two credentials (account id and password) followed by date range selection with format DD-MM-YYYY (e.g. 20-08-2022). If the program is successful, it will print your current balance.
