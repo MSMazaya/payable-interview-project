@@ -9,6 +9,7 @@
         "get-balance": "tsc && node dist/get-balance.js"
     },
     "dependencies": {
+        "inquirer": "^8.0.0",
         "moment": "^2.29.4",
         "payable-scraper": "file:../payable-scraper"
     },
