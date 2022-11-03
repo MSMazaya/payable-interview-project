@@ -90,12 +90,12 @@ class BniBankScraper extends BaseBankScraper {
                 await this.page.click("#REKENING")
 
                 console.log("click saldo")
-                await this.page.waitForSelector("#Informasi\-Saldo\-\-Mutasi\_Saldo\-Rekening");
-                await this.page.click("#Informasi\-Saldo\-\-Mutasi\_Saldo\-Rekening")
+                await this.page.waitForSelector("#Informasi-Saldo--Mutasi_Saldo-Rekening");
+                await this.page.click("#Informasi-Saldo--Mutasi_Saldo-Rekening")
 
                 console.log("eval")
-                await this.page.waitForSelector("#HREF\_AccountSummaryFG\\.BALANCE\_ARRAY\\[0\\]");
-                const currentBalance = await this.page.$eval("#HREF\_AccountSummaryFG\\.BALANCE\_ARRAY\\[0\\]", el => el.innerHTML)
+                await this.page.waitForSelector("#HREF_AccountSummaryFG\\.BALANCE_ARRAY\\[0\\]");
+                const currentBalance = await this.page.$eval("#HREF_AccountSummaryFG\\.BALANCE_ARRAY\\[0\\]", el => el.innerHTML)
                 return parseInt(currentBalance);
             }
             throw new Error("User is not logged in")
@@ -111,16 +111,19 @@ class BniBankScraper extends BaseBankScraper {
             await this.page.click("#REKENING")
 
             console.log("click saldo")
-            await this.page.waitForSelector("#Informasi\-Saldo\-\-Mutasi\_Saldo\-Rekening");
-            await this.page.click("#Informasi\-Saldo\-\-Mutasi\_Saldo\-Rekening")
+            await this.page.waitForSelector("#Informasi-Saldo--Mutasi_Saldo-Rekening");
+            await this.page.click("#Informasi-Saldo--Mutasi_Saldo-Rekening")
 
             console.log("balance")
-            await this.page.waitForSelector("#HREF\_AccountSummaryFG\\.BALANCE\_ARRAY\\[0\\]");
-            await this.page.click("#HREF\_AccountSummaryFG\\.BALANCE\_ARRAY\\[0\\]")
+            await this.page.waitForSelector("#HREF_AccountSummaryFG\\.BALANCE_ARRAY\\[0\\]");
+            await this.page.click("#HREF_AccountSummaryFG\\.BALANCE_ARRAY\\[0\\]")
+
+            await this.page.waitForSelector("#HREF_AccountSummaryFG\\.ACCOUNT_NUMBER_ARRAY\\[0\\]")
+            const accountNum = await this.page.$eval("#HREF_AccountSummaryFG\\.ACCOUNT_NUMBER_ARRAY\\[0\\]", el => el.innerHTML)
 
             console.log("transaction")
-            await this.page.waitForSelector("#TRANSACTION\_CATEGORIZATION");
-            await this.page.click("#TRANSACTION\_CATEGORIZATION")
+            await this.page.waitForSelector("#TRANSACTION_CATEGORIZATION");
+            await this.page.click("#TRANSACTION_CATEGORIZATION")
 
             await this.page.waitForSelector("#SearchPanel\\.SubSection2\\.collapsibleImage");
             await this.page.click("#SearchPanel\\.SubSection2\\.collapsibleImage")
@@ -128,6 +131,8 @@ class BniBankScraper extends BaseBankScraper {
             await this.page.type('#TransactionHistoryFG\\.FROM_TXN_DATE', moment(startAt).format("DD-MMM-YYYY"));
             await this.page.type('#TransactionHistoryFG\\.TO_TXN_DATE', moment(endAt).format("DD-MMM-YYYY"));
 
+            // uncomment for seeing moment date result
+            // await this.page.waitForNavigation()
             console.log("clicking")
             await this.page.waitForSelector("#SEARCH");
             await this.page.click("#SEARCH")
@@ -150,7 +155,7 @@ class BniBankScraper extends BaseBankScraper {
 
                 return {
                     bankCode: "BNI",
-                    accountNum: "1234567890",
+                    accountNum,
                     transactionDate,
                     transactionType,
                     transactionAmount,
@@ -167,11 +172,13 @@ class BniBankScraper extends BaseBankScraper {
     }
 
     async logout() {
+        await this.page.waitForSelector("HREF_Logout");
         await this.page.click("#HREF_Logout")
+        await this.page.waitForSelector("#LOG_OUT");
         await this.page.click("#LOG_OUT")
         await this.browser.close()
     }
 }
 
 const scraper = new BniBankScraper(process.env.ACCOUNT, process.env.PASSWORD);
-scraper.init().then(() => scraper.login().then(() => scraper.getTransactions(new Date(), new Date()).then(() => scraper.logout())))
+scraper.init().then(() => scraper.login().then(() => scraper.getTransactions(moment('20-10-2022', 'DD-MM-YYYY').toDate(), new Date()).then(() => scraper.logout())))
