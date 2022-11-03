@@ -1,0 +1,21 @@
+{
+    "name": "example",
+    "version": "1.0.0",
+    "description": "example for payable-scraper",
+    "author": "Muhammad Sulthan Mazaya",
+    "license": "MIT",
+    "scripts": {
+        "get-transaction": "tsc && node dist/get-transaction.js",
+        "get-balance": "tsc && node dist/get-balance.js"
+    },
+    "dependencies": {
+        "moment": "^2.29.4",
+        "payable-scraper": "file:../payable-scraper"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.42.0",
+        "@typescript-eslint/parser": "^5.42.0",
+        "eslint": "^8.26.0",
+        "typescript": "^4.8.4"
+    }
+}
