@@ -5,7 +5,22 @@
         "target": "es6",
         "moduleResolution": "node",
         "sourceMap": true,
-        "outDir": "dist"
+        "outDir": "dist",
+        "baseUrl": "./",
+        "paths": {
+            "engine/*": [
+                "./engine/*"
+            ],
+            "scraper/*": [
+                "./scraper/*"
+            ],
+            "utils/*": [
+                "./utils/*"
+            ],
+            "types/*": [
+                "./types/*"
+            ]
+        }
     },
     "lib": [
         "es2015"
